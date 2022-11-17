@@ -1,0 +1,5 @@
+<% @lists.each do |list| %>
+<p><%= list.name %></p>
+<% end %>
+
+<%= link_to "Add a new list", lists_new_path, class: "btn btn-primary" %>
