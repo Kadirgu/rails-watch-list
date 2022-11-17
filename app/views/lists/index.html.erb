@@ -1,5 +1,10 @@
-<% @lists.each do |list| %>
-<p><%= list.name %></p>
-<% end %>
 
-<%= link_to "Add a new list", lists_new_path, class: "btn btn-primary" %>
+<div class="text-center">
+  <div class="card" style="width: 18rem; margin: 0 auto;">
+    <% @lists.each do |list| %>
+    <h2><%= list.name %></h2>
+    <%= link_to "View list", list_path(list), class: "btn btn-info" %>
+    <% end %>
+    <%= link_to "Add a new list", lists_new_path, class: "btn btn-success" %>
+  </div>
+</div>
