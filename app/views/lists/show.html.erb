@@ -1,14 +1,42 @@
-<div class="text-center">
-  <h1> <%= @list.name %> </h1>
-    <%= link_to "Add a new bookmark", new_bookmark_path(@list), class: "btn btn-success" %>
+<!-- NAVBAR-->
+<nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a href="#" class="navbar-brand">
+      <!-- Logo Image -->
+      <img src="https://c0.klipartz.com/pngpicture/59/893/gratis-png-ilustracion-de-carrete-de-pelicula-tecnicas-cinematicas-de-claqueta-de-cine-claqueta-pelicula-elementos-de-pelicula.png" width="100" alt="Logo" class="d-inline-block align-middle mr-2">
+      <!-- Logo Text -->
+      <span class="text-uppercase font-weight-bold">WatchME</span>
+    </a>
+
+    <%= link_to "Back", lists_path, class: "btn btn-primary" %>
+    <%= link_to "My List", lists_path, class: "btn btn-primary" %>
+    <%= link_to "Home", lists_path, class: "btn btn-primary" %>
+  </div>
+</nav>
+
+<div class="bg-image" style="background-image: url('https://images.pexels.com/photos/7513412/pexels-photo-7513412.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); height: 1000px; background-size: cover;">
+  <div class="container py-5">
+    <div class="row my-2">
+      <div class="bg-white rounded p-3 shadow">
+        <%= @list.name %> </h1>
+        <%= link_to "Add a new bookmark", new_bookmark_path(@list), class: "btn btn-success" %>
+      </div>
+    </div>
+    <div class="row my-2">
       <% @list.bookmarks.each do |bookmark| %>
         <% movie= Movie.find(bookmark.movie_id) %>
-          <div class="card" style="width: 1000px; margin: 0 auto; height: 500px; background-image: url(<%=movie.poster_url%>);">
-          <h2> <%= movie.title %> </h2>
+        <div class="col-12 col-sm-3 mb-4">
+          <div class="card my-3 h-100">
+            <%= image_tag movie.poster_url, width: "100%" %>
+            <div class="card-body">
+              <h2 class="card-title"> <%= movie.title %> </h2>
+              <p class="card-text"> <%= movie.overview %> </p>
+              <p class="card-text"> My comment: <%= bookmark.comment %> </p>
+              <%= link_to "Delete this bookmark", bookmark_path(bookmark), class: "btn btn-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>
+            </div>
           </div>
-          <p> <%= movie.overview %> </p>
-        <p> My comment: <%= bookmark.comment %> </p>
-      <%= link_to "Delete this bookmark", bookmark_path(bookmark), class: "btn btn-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>
-    <%= link_to "Back", lists_path, class: "btn btn-primary" %>
-  <% end  %>
+        </div>
+      <% end  %>
+    </div>
+  </div>
 </div>

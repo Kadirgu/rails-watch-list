@@ -1,5 +1,32 @@
-<%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.input :comment %>
-  <%= f.association :movie %>
-  <%= f.submit %>
-<% end %>
+<!-- NAVBAR-->
+<nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a href="#" class="navbar-brand">
+      <!-- Logo Image -->
+      <img src="https://c0.klipartz.com/pngpicture/59/893/gratis-png-ilustracion-de-carrete-de-pelicula-tecnicas-cinematicas-de-claqueta-de-cine-claqueta-pelicula-elementos-de-pelicula.png" width="100" alt="Logo" class="d-inline-block align-middle mr-2">
+      <!-- Logo Text -->
+      <span class="text-uppercase font-weight-bold">WatchME</span>
+    </a>
+
+    <%= link_to "Back", lists_path, class: "btn btn-primary" %>
+    <%= link_to "My List", lists_path, class: "btn btn-primary" %>
+    <%= link_to "Home", lists_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</nav>
+
+<div class="bg-image" style="background-image: url('https://images.pexels.com/photos/7513412/pexels-photo-7513412.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); height: 1000px; background-size: cover;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-12 col-md-6 offset-lg-3">
+        <div class="bg-white rounded p-3 shadow">
+          <%= simple_form_for [@list, @bookmark] do |f| %>
+          <%= f.input :comment %>
+          <%= f.association :movie %>
+          <%= f.submit %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
